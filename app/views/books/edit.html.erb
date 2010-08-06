@@ -1,0 +1,69 @@
+<h1>Editing book</h1>
+
+<% form_for @book, :html => {:method => 'delete', :class => 'admin'} do |f| -%>
+<%= submit_tag "Delete this book", :confirm => "Delete #{@book.id} (#{@book.title})?" -%>
+<% end %>
+
+<% form_for(@book) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :author %><br />
+    <%= f.text_field :author %>
+  </p>
+  <p>
+    <%= f.label :publisher %><br />
+    <%= f.text_field :publisher %>
+  </p>
+  <p>
+    <%= f.label :publish_date %><br />
+    <%= f.date_select :publish_date %>
+  </p>
+  <p>
+    <%= f.label :pages %><br />
+    <%= f.text_field :pages %>
+  </p>
+  <p>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.label :category %><br />
+    <%= f.collection_select :category_id, Category.find(:all), :id, :name  %>
+  </p>
+
+  <p>
+    <%= f.label :subcategory %><br />
+    <%= f.text_field :subcategory %>
+  </p>
+  <p>
+    <%= f.label :special_offer %><br />
+    <%= f.check_box :special_offer %>
+  </p>
+  <p>
+    <%= f.label :discount %><br />
+    <%= f.check_box :discount %>
+  </p>
+  <p>
+    <%= f.label :source %><br />
+    <%= f.text_field :source %>
+  </p>
+  <p>
+    <%= f.label :isbn %><br />
+    <%= f.text_field :isbn %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+<%= link_to 'Show', @book %> |
+<%= link_to 'Back', books_path %>

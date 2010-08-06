@@ -1,0 +1,71 @@
+<b>Per Acquistare</b>
+<br/>
+Costo di spedizione in italia: &euro;5.
+<br>Pagamento contrassegno o con versamento su conto corrente postale.
+<br>Tempi di consegna: 3-5 giorni per i libri disponibili. 10-15 giorni per gli altri.
+<br>Contattaci al numero Tel/Fax 06 7822 160 o scrivici
+riempiendo il modulo seguente. Ti contatteremo al pi&ugrave; presto per formalizzare la richiesta.
+<style type='text/css'>
+<!--
+td3 {font-family: geneva,arial; font-size:smaller;}
+-->
+</style>
+<% form_for(@book, :url => { :action => "order", :id => @book.id }) do |f| %>
+  <%= f.error_messages %>
+<table cellpadding=1 cellspacing=0 border=1>
+<tr>
+<td valign=top>Titolo del libro che vuoi acquistare:</td>
+<td valign=top><textarea name=titolo cols=40 rows=6 'readonly'>
+<%= h(@book.title) %>
+<%= h(@book.author) %>
+<%= h(@book.publisher) %>
+<% if @book.discount? -%>
+<%= fmt_euro(@book.discount_price) %>
+<% else -%>
+<%= fmt_euro(@book.price) %>
+<% end -%>
+<% if @book.category -%>
+<%= h(@book.category.name) %>
+<% end -%>
+<%= h(@book.pages) %> pag
+</textarea>
+</td>
+</tr>
+<tr>
+<td valign=top>Il tuo email:</td>
+<td valign=top><input type=text name=email></td>
+</tr>
+</tr>
+<tr>
+<td valign=top>Il telefono a cui possiamo contattarti:</td>
+<td valign=top><input type=text name=tel></td>
+</tr>
+<!-- tr>
+<td valign=top>Il tuo indirizzo (fiscale):</td>
+<td valign=top><textarea name=address cols=40 rows=4></textarea></td>
+</tr>
+<tr>
+<td valign=top>Partita IVA o Codice Fiscale:</td>
+<td valign=top><input type=text name=iva></td>
+</tr>
+<tr>
+<td valign=top>L'indirizzo a cui spedire il libro
+<br>(se diverso dal precedente):</td>
+<td valign=top><textarea name=shipping cols=40 rows=4></textarea></td>
+</tr>
+<tr>
+<td valign=top colspan=2>
+Il libro viene spedito controassegno, senza spese di spedizione. 
+<br>Se preferisci un altro modo di pagamento, contattaci.
+</td></tr -->
+
+<tr>
+<td valign=top>Domande o altre richieste:</td>
+<td><textarea name=extra cols=40 rows=8></textarea></td>
+</tr>
+<tr>
+<td colspan=2 align=center>    <%= f.submit " &nbsp;Invia!&nbsp;" %></td>
+</tr>
+</table>
+<br/>Grazie, ti contatteremo presto!
+<% end %>

@@ -1,0 +1,30 @@
+<% if session[:user_id] -%>
+	<%= link_to 'Add new book', {:action=>'new'}, :class=>'admin' %>
+<% end -%>
+
+<% for book in @books %>
+	<p><font face="Arial"><b><%= highlight_keyword(h(@query),h(book.title)) %></b>
+	<% if book.author %>
+		di <%= highlight_keyword(h(@query),h(book.author)) %>
+	<% end %>	
+		<br><i><%= h(book.publisher) %><%#= h(book.publish_date) %></i>
+	<%if book.pages %>
+		<%= h(book.pages) %> pag&nbsp;&nbsp;
+	<% end %>
+	<% if book.price -%>
+		<% if book.discount? %>
+			<font color=red><%= fmt_euro(book.discount_price) %></font> (invece di <%= fmt_euro(book.price) %>)
+		<% else -%>
+			<%= fmt_euro(book.price) %>
+		<% end -%>
+	<% end -%>
+	<br><font face="verdana" size="-2"><b>&gt;&gt;</b></font><font face="verdana" size="-1">
+	<%= link_to 'Vai al modulo di acquisto', :action=>'order', :id=>book.id, :title=>book.title -%>
+	</font></font>
+	<% if session[:user_id] -%>
+			<%= link_to 'Edit', {:action=>'edit', :id=>book.id}, :class=>'admin' -%>
+	<% end -%>
+	</p>	
+<% end -%>
+<%= will_paginate @books %>
+

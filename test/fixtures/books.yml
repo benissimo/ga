@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  author: MyString
+  publisher: MyString
+  pages: 
+  price: 9.99
+  description: MyText
+  category: 
+  subcategory: MyString
+  special_offer: false
+  discount: false
+  source: MyString
+  isbn: MyString
+
+two:
+  title: MyString
+  author: MyString
+  publisher: MyString
+  pages: 
+  price: 9.99
+  description: MyText
+  category: 
+  subcategory: MyString
+  special_offer: false
+  discount: false
+  source: MyString
+  isbn: MyString

@@ -1,0 +1,24 @@
+<p><font face="Arial"><b>Modulo di Ricerca</b>
+</font></p><p><font face="Arial"> 
+Per fare una ricerca nel nostro catalogo,
+inserisci una o più parole chiave.
+</font></p><p>
+
+<table bgcolor="#e1e1e1" border="0" bordercolor="white" cellpadding="3">
+	<%= form_tag '/books/search', :method => :get %>
+<tbody><tr>
+<th>Parole chiave</th><td><%= text_field :search, :q %></td>
+
+</tr>
+<tr>
+<th colspan="2">
+	<%= submit_tag  "Search" %>
+</th>
+</tr>
+
+</tbody>
+</form>
+</table>
+
+
+

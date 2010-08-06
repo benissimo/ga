@@ -1,0 +1,71 @@
+<div id="show" title="<%= h(@book.title) %>" selected="true" class="panel">
+
+	<fieldset>
+		<div class="box">
+<strong><%= h(@book.title) %></strong><br/>
+<em><%= h(@book.author) %></em><br/>
+<%= h(@book.publisher) %><br/>
+
+<% if @book.discount? -%>
+<%= fmt_euro(@book.discount_price) %>
+<% else -%>
+<%= fmt_euro(@book.price) %>
+<% end -%><br/>
+
+<% if @book.category -%>
+	<%= h(@book.category.name) %><br/>
+<% end -%>
+
+<%= h(@book.pages) %> pag<br/>
+		</div>
+	</fieldset>
+
+
+<a href="#order" class="whiteButton">Per Acquistare</a>
+</div>
+
+<% form_for(@book, :url => { :action => "order", :id => @book.id },
+				   :html => {:class => 'panel',
+							 :id => 'order',
+							 :target => '_self',
+							 :method => :post,
+							 :title => 'Per Acquistare'}) do |f| %>
+  <%= f.error_messages %>
+<fieldset>
+<input type="hidden" name=titolo value="
+<%= h(@book.title) %>
+<%= h(@book.author) %>
+<%= h(@book.publisher) %>
+<% if @book.discount? -%>
+<%= fmt_euro(@book.discount_price) %>
+<% else -%>
+<%= fmt_euro(@book.price) %>
+<% end -%>
+<% if @book.category -%>
+<%= h(@book.category.name) %>
+<% end -%>
+<%= h(@book.pages) %> pag
+" />
+<div class="row"><label for="email">email</label>
+<input type=text name=email />
+</div>
+<div class="row"><label for="tel">telefono</label>
+<input type=text name=tel />
+</div>
+<div class="row"><label for="extra">commenti</label>
+<input type=text name=extra />
+</div>
+<a class="whiteButton" type="submit" href="#">Ordinare</a>
+<%#= f.submit " &nbsp;Invia!&nbsp;" %>
+</fieldset>
+<ul><li><em>Costo di spedizione in italia: &euro;5.</em></li>
+<li><em>Pagamento contrassegno o con versamento su conto corrente postale.</em></li>
+<li><em>Tempi di consegna: 3-5 giorni per i libri disponibili. 10-15 giorni per gli altri.</em></li>
+<li><em>Contattaci al numero Tel/Fax 06 7822 160 o scrivici
+riempiendo il modulo sopra.</em></li>
+<li><em>Grazie, ti contatteremo presto!</em></li>
+</ul>
+
+<% end %>
+
+

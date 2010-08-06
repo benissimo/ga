@@ -1,0 +1,11 @@
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
+<%#= debug @book %>
+<h2>Title: <%= link_to @book.title, :action=>'order', :id=>@book.id, :title=>@book.title %></h2>
+<h3>Author: <%= @book.author%></h3>
+<% if @book.category -%>
+<h3>Category: <%= link_to @book.category.name, :action=>'list', :id=>@book.category.name %></h3>
+<% else %>
+<h3>uncategorized</h3>
+<% end -%>

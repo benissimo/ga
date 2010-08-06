@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <%= stylesheet_link_tag 'site' %>
+
+	<meta name="description" content="GalileoAlby.com - Architecture Books - <%= @title %>" >
+	<meta name="keywords" content="GalileoAlby.com, Galileo Alby, Architecture, Rome, Books, Bookshop, books, <%= @title %>" >
+	<title>GalileoAlby.com - Architecture Books - <%= @title %></title>
+
+</head>
+<body bgcolor="#C8E7FF" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0">
+<font face="Arial">
+<% if flash[:notice] -%>
+<p style="color: green"><%= flash[:notice] %></p>
+<% end %>
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td width="190" valign="top" bgcolor="#ffffff" class="leftnav" nowrap>
+	<table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="white">
+		<tr><td align="left" class="logo" valign="top" height="50"><a href="/"><img vspace="3" src="/images/GA_italian.jpg" width="180" height="43" alt="GalileoAlby.com - Libreria di Architettura" title="GalileoAlby.com - Libreria di Architettura" border="0" align="left" valign="top"></a>
+		<!-- font size="+2">GalileoAlby.com</font><br><font size="+1">Libreria di Architettura</font --></td></tr></table>
+	<!-- begin vertical nav -->
+	
+	<% cache(:action => 'category_nav') do %>
+		<%= render(:partial=>"shared/category_nav") %> 
+		<%#=:object=> @categories = Category.all(:order=>"name")) %>
+	<% end %>
+
+	<!-- end vertical nav -->
+</td><td valign="top" align="left" class="header" width=100%>
+	<!-- open table -->
+	<table cellpadding=0 cellspacing=0 border=0 width=100%>
+<!-- begin horizontal nav -->
+		<tr><td height=49 class=hnav bgcolor=white width=100% align=center><font face='verdana' size='-1' class=hnav> &nbsp; <a href=/ name='HOME'>HOME</a> &nbsp; 
+			<a href=/books/recent name='NOVIT&Agrave;'>NOVIT&Agrave;</a> &nbsp; 
+			<a href=/books/offers name='SCONTI'>SCONTI</a> &nbsp; 
+			<!-- b>COME ACQUISTARE</b -->
+			<a href=/books/search name='SEARCH'>SEARCH</a> &nbsp; 
+		<!-- a href=/links.php name='LINKS'>LINKS</a --> &nbsp;
+		
+		<% if session[:user_id] -%>
+			<%= link_to 'LOGOUT', {:action=>'logout', :controller=>'admin/login'}, :class=>'admin' %>
+		<% end -%>
+		</font></td></tr>
+<!-- end horizontal nav -->		
+	<tr><td valign="top" align="left" class="content">
+<% if @title -%>
+	<%= render(:partial=>'shared/title')%>
+<% end -%>
+<%= yield  %>
+	</td></tr></table>
+
+</td></tr><tr><td colspan="2" align="center" bgcolor="white"><br>
+<!-- open table -->
+<table><tbody><tr><td>
+<font face="verdana" size="-1">
+<font size="1">©<%= Time.now.year -%></font> 
+
+Email: <a href="mailto:webmaster@galileoalby.com?subject=galileoalby.com">webmaster@galileoalby.com</a>
+Tel/fax: +39 06 7822 160
+<br>Nel nostro magazzino c'è molto più di ciò
+che trovi in elenco!
+Quello che non abbiamo lo troviamo!
+<br></font><p>
+<!-- font face="verdana" size="-1"></font -->
+</p></td></tr></tbody></table>
+
+</td></tr></table>
+</font>
+</body>
+</html>

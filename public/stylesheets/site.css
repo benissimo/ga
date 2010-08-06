@@ -1,0 +1,55 @@
+<!-- css galileoalby.com -->
+a:hover {
+	color: #CC0000;
+	text-decoration: underline;
+}
+a {
+	//color: #3333cc;
+	color: #333333;
+	text-decoration: none;
+}
+a.admin, a.admin:hover {
+	color: #f33;
+	text-decoration: underline;
+}
+form.admin {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+.link {
+	color: #000033;
+	text-decoration: underline;	
+}
+.pagelink {
+	color: #333333;
+	text-decoration: underline;
+	font-weight: bold;	
+}
+.pagelink:hover {
+	color: #CC0000;
+	text-decoration: underline;
+	font-weight: bold;	
+}
+.pagelinkOLD:visited {
+	color: #330033;
+	text-decoration: underline;	
+}
+.leftnavOLD {
+	border-right: 1px solid gray;
+}
+.logo {
+	padding-left: 3px;
+}
+.content {
+	padding-left: 3px;	
+}
+.contentOLD {
+	border-top: 1px solid gray;
+}
+.hnav {
+	text-align: center;
+}
+.hl {
+	color: gray;
+}

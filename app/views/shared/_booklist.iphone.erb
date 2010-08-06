@@ -1,0 +1,20 @@
+<% if session[:user_id] -%>
+	<%= link_to 'Add new book', {:action=>'new'}, :class=>'admin' %>
+<% end -%>
+<% unless @books.previous_page -%>
+<ul title="<%= h(@title.capitalize) -%>" selected="true" >
+<% end -%>
+<% for book in @books %>
+	<li><% link_to({:action=>'order', :id=>book.id, :title=>book.title}) do %>
+		 <%= highlight_keyword(h(@query),h(book.title)) %> 
+		<em><%= highlight_keyword(h(@query),h(book.author)) %></em>
+		<% end %></li>	
+<% end -%>
+<% if @books.next_page -%>
+	<li><%= link_to 'More...', {:overwrite_params => {:page => @page + 1}}, :target=>'_replace' %></li>
+<% end -%>
+<% unless @books.previous_page -%>
+</ul>
+<% end -%>
+
+

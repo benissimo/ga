@@ -1,0 +1,29 @@
+<ul title="Libri" selected="true">
+	<li><a href="#categories">Categorie</a></li>
+	<li><a href="/books/recent">Novit&agrave;</a></li>
+	<li><a href="/books/offers">Sconti</a></li>
+	<li><a href="#about">Chi Siamo</a></li>
+</ul>
+<ul title="Categorie" id="categories">
+	<% @categories.each do |c| %>
+		<% if c.name -%>
+			<li><%= link_to c.name, :action=>"list", :id=>c.name %></li>
+		<% end -%>	
+	<% end %>
+</ul>
+<ul title="Chi Siamo" id="about">
+	<li>Benvenuto su galileoalby.com,
+	libreria online specializzata in testi di architettura di editori stranieri
+	(area olandese, spagnola, inglese, americana, tedesca, francese, giapponese, cinese, ed altro).
+	</li>
+	<li>La nostra sede è a Roma, ma facciamo spedizioni in tutta Italia
+	e in Europa.
+	</li>
+	<li>Se non trovi il libro che cerchi: contattaci!
+	</li>
+	<li>Telefono/Fax: <a href="tel:39-06-7822-160" class="blue">+39 06 7822 160</a>
+	</li>
+	<li>Email: <a href="mailto:webmaster@galileoalby.com" class="blue">webmaster@galileoalby.com</a>
+	</li>
+	<li><em>Quello che non abbiamo lo troviamo velocemente!</em></li>
+</ul>

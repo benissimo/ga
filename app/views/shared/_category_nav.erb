@@ -1,0 +1,10 @@
+<%# vertical nav, list of categories %>
+<font face='verdana' size='-1'>
+	<%#= debug ActionController::Caching.cache_configured? %>
+	<% @categories.each do |c| %>
+		<% if c.name -%>
+			<font size="1" color=""#333333"" face="verdana">&#149;</font>
+			<%= link_to c.name, :action=>"list", :id=>c.name %><br>
+		<% end -%>	
+	<% end %>
+</font>
