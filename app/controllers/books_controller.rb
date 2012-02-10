@@ -67,7 +67,7 @@ class BooksController < ApplicationController
   def order
     @book = Book.find(params[:id])
     #if request.get?
-    unless params[:email]      
+    unless validate_order params
       # just display form
       respond_to do |format|
         format.html # order.html.erb
@@ -225,4 +225,13 @@ class BooksController < ApplicationController
     end
   end
 
+  # This isn't much of a validation method...
+  def validate_order params
+    return false unless params[:email].present? && params[:email] =~ /[^@]+@[^@]+/
+    # cheapo regex for email, not really trying to filter, just catch typos: missing or too many @s.
+    return false if params[:phone].present? && params[:phone].gsub(/\D/,'').length < 7
+    # a lot of spam bots post phone numbers as random series of letters. this is a cheap way of
+    # catching that without having to print a captcha or ask a question.
+    return true
+  end
 end
